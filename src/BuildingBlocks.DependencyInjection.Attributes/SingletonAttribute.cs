@@ -7,13 +7,12 @@
     }
 
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
-    public class SingletonAttribute<TService>(string? key = null, bool isEnumerable = false) : SingletonAttribute(key)
+    public class SingletonAttribute<TService>(string? key = null) : SingletonAttribute(key)
     {
-        public bool IsEnumerable { get; } = isEnumerable;
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-    public class SingletonAttribute<TService, TImplementation>(string? key = null, bool isEnumerable = false) : SingletonAttribute<TService>(key, isEnumerable)
+    public class SingletonAttribute<TService, TImplementation>(string? key = null) : SingletonAttribute<TService>(key)
         where TImplementation : TService
     {
     }

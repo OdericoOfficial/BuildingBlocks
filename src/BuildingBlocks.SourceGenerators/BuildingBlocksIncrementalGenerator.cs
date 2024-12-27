@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using BuildingBlocks.SourceGenerators.Abstractions;
+﻿using BuildingBlocks.SourceGenerators.Abstractions;
 using BuildingBlocks.SourceGenerators.Sources;
 using BuildingBlocks.SourceGenerators.SyntaxProviders;
 using Microsoft.CodeAnalysis;
