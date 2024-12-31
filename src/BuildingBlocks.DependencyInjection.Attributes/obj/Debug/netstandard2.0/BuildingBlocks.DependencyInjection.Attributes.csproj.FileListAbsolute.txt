@@ -1,0 +1,10 @@
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.deps.json
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.dll
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.pdb
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.csproj.AssemblyReference.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.AssemblyInfoInputs.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.AssemblyInfo.cs
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.csproj.CoreCompileInputs.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.dll
+D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.pdb

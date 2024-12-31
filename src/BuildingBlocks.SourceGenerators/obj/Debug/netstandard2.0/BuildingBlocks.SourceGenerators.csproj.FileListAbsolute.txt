@@ -1,0 +1,10 @@
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\bin\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.deps.json
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\bin\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.dll
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\bin\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.pdb
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.csproj.AssemblyReference.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.GeneratedMSBuildEditorConfig.editorconfig
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.AssemblyInfoInputs.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.AssemblyInfo.cs
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.csproj.CoreCompileInputs.cache
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.dll
+D:\Lean\BuildingBlocks\src\BuildingBlocks.SourceGenerators\obj\Debug\netstandard2.0\BuildingBlocks.SourceGenerators.pdb
