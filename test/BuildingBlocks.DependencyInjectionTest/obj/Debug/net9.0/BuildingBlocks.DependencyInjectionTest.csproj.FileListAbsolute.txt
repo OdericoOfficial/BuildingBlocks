@@ -131,3 +131,14 @@ D:\Lean\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net
 D:\Lean\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.pdb
 D:\Lean\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.genruntimeconfig.cache
 D:\Lean\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\ref\BuildingBlocks.DependencyInjectionTest.dll
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\bin\Debug\net9.0\.msCoverageSourceRootsMapping_BuildingBlocks.DependencyInjectionTest
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\bin\Debug\net9.0\CoverletSourceRootsMapping_BuildingBlocks.DependencyInjectionTest
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.csproj.AssemblyReference.cache
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.AssemblyInfoInputs.cache
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.AssemblyInfo.cs
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.csproj.CoreCompileInputs.cache
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.sourcelink.json
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.dll
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\refint\BuildingBlocks.DependencyInjectionTest.dll
+D:\BuildingBlocks\test\BuildingBlocks.DependencyInjectionTest\obj\Debug\net9.0\BuildingBlocks.DependencyInjectionTest.pdb

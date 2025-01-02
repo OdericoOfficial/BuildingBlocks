@@ -8,3 +8,14 @@ D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Deb
 D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.csproj.CoreCompileInputs.cache
 D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.dll
 D:\Lean\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.pdb
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.deps.json
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.dll
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\bin\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.pdb
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.csproj.AssemblyReference.cache
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.GeneratedMSBuildEditorConfig.editorconfig
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.AssemblyInfoInputs.cache
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.AssemblyInfo.cs
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.csproj.CoreCompileInputs.cache
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.sourcelink.json
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.dll
+D:\BuildingBlocks\src\BuildingBlocks.DependencyInjection.Attributes\obj\Debug\netstandard2.0\BuildingBlocks.DependencyInjection.Attributes.pdb

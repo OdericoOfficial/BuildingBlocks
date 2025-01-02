@@ -1,39 +1,18 @@
-﻿using System.Reflection;
-
-namespace BuildingBlocks.Aspects.Abstractions
+﻿namespace BuildingBlocks.Aspects.Abstractions
 {
-    public sealed class AspectContext
+    public readonly ref struct AspectContext
     {
-        public object Implementation
-            => throw new NotImplementedException();
+        public IServiceProvider ServiceProvider { get; }
 
-        public Type ImplementationType
-            => throw new NotImplementedException();
+        public Type InstanceType { get; }
 
-        public Type ReturnType
-            => throw new NotImplementedException();
+        public object Instance { get; }
 
-        public MethodBase? ImplementationMethod
-            => throw new NotImplementedException();
-
-        public bool IsAsyncMethod
-            => throw new NotImplementedException();
-
-        public IServiceProvider ServiceProvider
-            => throw new NotImplementedException();
-
-        private AspectContext() { }
-        
-        public ref T Parameter<T>(int index)
-            => throw new NotImplementedException();
-
-        public ref T Return<T>()
-            => throw new NotImplementedException();
-
-        public ref T Field<T>(string name)
-            => throw new NotImplementedException();
-
-        public ref T Property<T>(string name)
-            => throw new NotImplementedException();
+        public AspectContext(IServiceProvider serviceProvider, Type instanceType, object instance)
+        {
+            ServiceProvider = serviceProvider;
+            InstanceType = instanceType;
+            Instance = instance;
+        }
     }
 }

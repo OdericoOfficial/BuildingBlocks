@@ -59,21 +59,21 @@ namespace BuildingBlocks.SourceGenerators.SyntaxProviders
 
             var source = new DependencyInjectionSource
             {
-                ServiceName = symbol.TypeArguments.Length == 2 ? 
+                ServiceName = symbol.TypeArguments.Length == 2 ?
                     symbol.TypeArguments[0].Name : symbol.TypeArguments[0].ContainingType.GetAttributes()
                         .Any(item => item.AttributeClass is not null && item.AttributeClass.Name == "GeneratedProxyAttribute") ?
                             $"{symbol.TypeArguments[0].Name}GeneratedProxy" : symbol.TypeArguments[0].Name,
-                
+
                 ServiceNamespace = symbol.TypeArguments[0].ContainingNamespace.ToDisplayString(),
-                
+
                 ImplementationName = symbol.TypeArguments.Length == 2 ?
                     symbol.TypeArguments[1].ContainingType.GetAttributes()
                         .Any(item => item.AttributeClass is not null && item.AttributeClass.Name == "GeneratedProxyAttribute") ?
                             $"{symbol.TypeArguments[1].Name}GeneratedProxy" : symbol.TypeArguments[0].Name : string.Empty,
-                
-                ImplementationNamespace = symbol.TypeArguments.Length == 2 ? 
+
+                ImplementationNamespace = symbol.TypeArguments.Length == 2 ?
                     symbol.TypeArguments[1].ContainingNamespace.ToDisplayString() : string.Empty,
-                
+
                 InjectType = symbol.Name switch
                 {
                     "HostedServiceAttribute" => InjectType.HostedService,
@@ -131,22 +131,22 @@ namespace BuildingBlocks.SourceGenerators.SyntaxProviders
 
             var source = new DependencyInjectionSource
             {
-                ServiceName = attributeSymbol.TypeArguments.Length == 1 ? 
+                ServiceName = attributeSymbol.TypeArguments.Length == 1 ?
                     attributeSymbol.TypeArguments[0].Name : classSymbol.GetAttributes()
                         .Any(item => item.AttributeClass is not null && item.AttributeClass.Name == "GeneratedProxyAttribute") ?
                             $"{classSymbol.Name}GeneratedProxy" : classSymbol.Name,
 
                 ServiceNamespace = attributeSymbol.TypeArguments.Length == 1 ?
                     attributeSymbol.TypeArguments[0].ContainingNamespace.ToDisplayString() : classSymbol.ContainingNamespace.ToDisplayString(),
-                
+
                 ImplementationName = attributeSymbol.TypeArguments.Length == 1 ?
                     classSymbol.GetAttributes()
                         .Any(item => item.AttributeClass is not null && item.AttributeClass.Name == "GeneratedProxyAttribute") ?
                             $"{classSymbol.Name}GeneratedProxy" : classSymbol.Name : string.Empty,
-                
+
                 ImplementationNamespace = attributeSymbol.TypeArguments.Length == 1 ?
                     classSymbol.ContainingNamespace.ToDisplayString() : string.Empty,
-                
+
                 InjectType = attributeSymbol.Name switch
                 {
                     "HostedServiceAttribute" => InjectType.HostedService,

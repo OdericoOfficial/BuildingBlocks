@@ -1,6 +1,6 @@
 ﻿namespace BuildingBlocks.Aspects.Abstractions
 {
-    public interface IAsyncAspect : IAspect
+    public interface IAsyncAspect
     {
         Task OnNextAsync(AspectContext context, AsyncAspectDelegate next);
     }

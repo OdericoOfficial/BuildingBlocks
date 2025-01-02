@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Aspects.Attr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.AspectsTest", "test\BuildingBlocks.AspectsTest\BuildingBlocks.AspectsTest.csproj", "{2828AD60-591F-4836-80AC-97E67D782B40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Reflection", "src\BuildingBlocks.Reflection\BuildingBlocks.Reflection.csproj", "{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.ReflectionTest", "test\BuildingBlocks.ReflectionTest\BuildingBlocks.ReflectionTest.csproj", "{8251CCF4-32DE-471D-AC03-49581B00CA20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,14 @@ Global
 		{2828AD60-591F-4836-80AC-97E67D782B40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2828AD60-591F-4836-80AC-97E67D782B40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2828AD60-591F-4836-80AC-97E67D782B40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +72,7 @@ Global
 		{7127ED8C-AA76-40BC-B3BE-CD76ACA6001E} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 		{A1AE394A-754F-4FBA-88B2-E256ED4974CD} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 		{2828AD60-591F-4836-80AC-97E67D782B40} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
+		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0} = {26DA755D-57FA-464D-9246-C6936110FCDD}
+		{8251CCF4-32DE-471D-AC03-49581B00CA20} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
 	EndGlobalSection
 EndGlobal

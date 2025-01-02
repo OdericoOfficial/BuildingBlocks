@@ -1,6 +1,7 @@
 ﻿namespace BuildingBlocks.Aspects.Abstractions
 {
-    public interface IAspect
+    public struct AspectBlock
     {
+
     }
 }

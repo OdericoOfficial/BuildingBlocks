@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BuildingBlocks.Aspects.Abstractions")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+99bfe39899ab0b6a8de5b8a5da875f0f1952e77a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e339e1b5cde545fb213cbe2d20ed1131b7c202bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("BuildingBlocks.Aspects.Abstractions")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BuildingBlocks.Aspects.Abstractions")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
