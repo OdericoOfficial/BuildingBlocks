@@ -8,7 +8,7 @@ namespace BuildingBlocks.DependencyInjectionTest
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(builder => builder.AddXunitOutput());
-            services.AddRegisteredServices();
+            
         }
     }
 }

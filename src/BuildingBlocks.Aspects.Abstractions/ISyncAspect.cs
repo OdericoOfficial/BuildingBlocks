@@ -2,6 +2,6 @@
 {
     public interface ISyncAspect
     {
-        void OnNext(AspectContext context, SyncAspectDelegate next);
+        void OnNext(IAspectContext context, SyncAspectDelegate next);
     }
 }

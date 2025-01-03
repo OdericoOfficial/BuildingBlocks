@@ -2,6 +2,6 @@
 {
     public interface IAsyncAspect
     {
-        Task OnNextAsync(AspectContext context, AsyncAspectDelegate next);
+        Task OnNextAsync(IAspectContext context, AsyncAspectDelegate next);
     }
 }

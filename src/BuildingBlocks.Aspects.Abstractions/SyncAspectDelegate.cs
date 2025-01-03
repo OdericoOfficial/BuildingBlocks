@@ -1,4 +1,4 @@
 ﻿namespace BuildingBlocks.Aspects.Abstractions
 {
-    public delegate void SyncAspectDelegate(AspectContext context);
+    public delegate void SyncAspectDelegate(IAspectContext context);
 }

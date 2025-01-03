@@ -7,7 +7,7 @@ namespace System.Reflection
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe TValue GetValue<TTarget, TValue>(this FieldInfo fieldInfo, ref TTarget target)
         {
-            var offset = Environment.Is64BitProcess ? 
+            var offset = Environment.Is64BitProcess ?
                 FieldDesc64.GetOffset(fieldInfo) : FieldDesc32.GetOffset(fieldInfo);
 
             if (fieldInfo.DeclaringType.IsValueType)
