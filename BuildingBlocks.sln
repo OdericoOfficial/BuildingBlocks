@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Reflection",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.ReflectionTest", "test\BuildingBlocks.ReflectionTest\BuildingBlocks.ReflectionTest.csproj", "{8251CCF4-32DE-471D-AC03-49581B00CA20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Aspects.Abstractions", "src\BuildingBlocks.Aspects.Abstractions\BuildingBlocks.Aspects.Abstractions\BuildingBlocks.Aspects.Abstractions.csproj", "{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Aspects.Attributes", "src\BuildingBlocks.Aspects.Attributes\BuildingBlocks.Aspects.Attributes.csproj", "{538E01C8-A00C-4870-8691-AB38B3C2EB63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +47,14 @@ Global
 		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8251CCF4-32DE-471D-AC03-49581B00CA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{538E01C8-A00C-4870-8691-AB38B3C2EB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{538E01C8-A00C-4870-8691-AB38B3C2EB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{538E01C8-A00C-4870-8691-AB38B3C2EB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{538E01C8-A00C-4870-8691-AB38B3C2EB63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,5 +65,7 @@ Global
 		{E744EC73-82CA-4861-B662-025072B1F757} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
 		{B52CE047-2B0B-4FE6-8FBB-3F8672E622A0} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 		{8251CCF4-32DE-471D-AC03-49581B00CA20} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
+		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885} = {26DA755D-57FA-464D-9246-C6936110FCDD}
+		{538E01C8-A00C-4870-8691-AB38B3C2EB63} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 	EndGlobalSection
 EndGlobal

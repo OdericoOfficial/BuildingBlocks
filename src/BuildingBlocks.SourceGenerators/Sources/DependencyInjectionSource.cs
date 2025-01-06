@@ -1,13 +1,20 @@
-﻿namespace BuildingBlocks.SourceGenerators.Sources
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace BuildingBlocks.SourceGenerators.Sources
 {
-    internal struct DependencyInjectionSource
+    internal struct DependencyInjectionSource(ServiceLifetime lifetime, string serviceName, 
+        string implementationName, string key, bool isEnumerable, bool isHosted)
     {
-        public InjectType InjectType { get; set; }
-
-        public string ServiceName { get; set; }
-
-        public string ImplementationName { get; set; }
-
-        public string Key { get; set; }
+        public ServiceLifetime Lifetime { get; } = lifetime;
+        
+        public string ServiceName { get; } = serviceName;
+        
+        public string ImplementationName { get; } = implementationName;
+        
+        public string Key { get; } = key;
+        
+        public bool IsEnumerable { get; } = isEnumerable;
+        
+        public bool IsHosted { get; } = isHosted;
     }
 }

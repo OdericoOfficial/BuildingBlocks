@@ -1,7 +1,5 @@
-﻿using BuildingBlocks.SourceGenerators.Abstractions;
-using BuildingBlocks.SourceGenerators.Sources;
-using BuildingBlocks.SourceGenerators.SubIncrementalGenerators;
-using BuildingBlocks.SourceGenerators.SyntaxProviders;
+﻿using BuildingBlocks.SourceGenerators.Generators;
+using BuildingBlocks.SourceGenerators.Providers;
 using Microsoft.CodeAnalysis;
 
 namespace BuildingBlocks.SourceGenerators
@@ -13,14 +11,14 @@ namespace BuildingBlocks.SourceGenerators
     {
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            context.RegisterSourceOutput(context.SyntaxProvider.CreateSyntaxProvider(
-                SyntaxProvider<DependencyInjectionSyntaxProvider,
-                DependencyInjectionSource>.Provider.Predicate,
-                SyntaxProvider<DependencyInjectionSyntaxProvider,
-                DependencyInjectionSource>.Provider.Transform)
-                .Collect(), 
-                SubIncrementalGenerator<DependencyInjectionSubIncrementalGenerator, 
-                DependencyInjectionSource>.Generator.RegisterOutput);
+            RegisterDependenceInjection(context);
+        }
+
+        private void RegisterDependenceInjection(IncrementalGeneratorInitializationContext context)
+        {
+            var classTargets = context.SyntaxProvider.CreateSyntaxProvider(ClassTargetInjectProvider.Predicate, ClassTargetInjectProvider.Transform).Collect();
+            var assmblyTargets = context.CompilationProvider.SelectMany(AssemblyTargetInjectProvider.Transform).Collect();
+            context.RegisterSourceOutput(classTargets.Combine(assmblyTargets), DependencyInjectionGenerator.RegisterServices);
         }
     }
 }

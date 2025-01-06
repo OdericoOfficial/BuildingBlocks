@@ -4,16 +4,16 @@
     {
         IServiceProvider ServiceProvider { get; }
 
-        Type ImplementationType { get; }
+        Type InstanceType { get; }
 
-        object Implementation { get; }
+        object Instance { get; }
 
         T GetParameter<T>(string name);
 
-        T SetParameter<T>(string name, T value);
+        void SetParameter<T>(string name);
 
         T GetReturn<T>();
 
-        T SetReturn<T>(T value);
+        void SetReturn<T>();
     }
 }
