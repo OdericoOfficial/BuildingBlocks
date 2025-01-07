@@ -1,14 +1,21 @@
 ﻿using System.Collections.Immutable;
 using System.Text;
+using BuildingBlocks.SourceGenerators.Providers;
 using BuildingBlocks.SourceGenerators.Sources;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace BuildingBlocks.SourceGenerators.Generators
 {
-    internal static class DependencyInjectionGenerator
+    internal class DependencyInjectionIncrementalGenerator : IIncrementalGenerator
     {
+        public void Initialize(IncrementalGeneratorInitializationContext context)
+        {
+            var classTargets = context.SyntaxProvider.CreateSyntaxProvider(ClassTargetInjectProvider.Predicate, ClassTargetInjectProvider.Transform).Collect();
+            var assmblyTargets = context.CompilationProvider.SelectMany(AssemblyTargetInjectProvider.Transform).Collect();
+            context.RegisterSourceOutput(classTargets.Combine(assmblyTargets), RegisterServices);
+        }
+
         public static void RegisterServices(SourceProductionContext context, (ImmutableArray<DependencyInjectionSource> Left, ImmutableArray<DependencyInjectionSource> Right) sources)
         {
             var sourceBuilder = new StringBuilder();
@@ -55,45 +62,49 @@ namespace Microsoft.Extensions.DependencyInjection
         private static string GetKeyedEnumerableServiceExpression(DependencyInjectionSource source)
             => source.Lifetime switch
             {
-                ServiceLifetime.Scoped => $"            services.TryAddEnumerable(ServiceDescriptor.KeyedScoped(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));",
-                ServiceLifetime.Singleton => $"            services.TryAddEnumerable(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));",
-                _ => $"            services.TryAddEnumerable(ServiceDescriptor.KeyedTransient(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));"
+                0 => $"            services.TryAddEnumerable(ServiceDescriptor.KeyedSingleton(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));",
+                1 => $"            services.TryAddEnumerable(ServiceDescriptor.KeyedScoped(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));",
+                2 => $"            services.TryAddEnumerable(ServiceDescriptor.KeyedTransient(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName})));",
+                _ => string.Empty
             };
 
         private static string GetEnumerableServiceExpression(DependencyInjectionSource source)
             => source.Lifetime switch
             {
-                ServiceLifetime.Scoped => $"            services.TryAddEnumerable(ServiceDescriptor.Scoped(typeof({source.ServiceName}), typeof({source.ImplementationName})));",
-                ServiceLifetime.Singleton => $"            services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof({source.ServiceName}), typeof({source.ImplementationName})));",
-                _ => $"            services.TryAddEnumerable(ServiceDescriptor.Transient(typeof({source.ServiceName}), typeof({source.ImplementationName})));"
+                0 => $"            services.TryAddEnumerable(ServiceDescriptor.Singleton(typeof({source.ServiceName}), typeof({source.ImplementationName})));",
+                1 => $"            services.TryAddEnumerable(ServiceDescriptor.Scoped(typeof({source.ServiceName}), typeof({source.ImplementationName})));",
+                2 => $"            services.TryAddEnumerable(ServiceDescriptor.Transient(typeof({source.ServiceName}), typeof({source.ImplementationName})));",
+                _ => string.Empty
             };
 
         private static string GetKeyedServiceExpression(DependencyInjectionSource source)
             => source.Lifetime switch
             {
-                ServiceLifetime.Scoped => source.ImplementationName != string.Empty ?
-                $"            services.TryAddKeyedScoped(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName}));"
-                    : $"            services.TryAddKeyedScoped(typeof({source.ServiceName}), {source.Key});",
-                ServiceLifetime.Singleton => source.ImplementationName != string.Empty ?
+                0 => source.ImplementationName != string.Empty ?
                 $"            services.TryAddKeyedSingleton(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName}));"
                     : $"            services.TryAddKeyedSingleton(typeof({source.ServiceName}), {source.Key});",
-                _ => source.ImplementationName != string.Empty ?
+                1 => source.ImplementationName != string.Empty ?
+                $"            services.TryAddKeyedScoped(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName}));"
+                    : $"            services.TryAddKeyedScoped(typeof({source.ServiceName}), {source.Key});",
+                2 => source.ImplementationName != string.Empty ?
                 $"            services.TryAddKeyedTransient(typeof({source.ServiceName}), {source.Key}, typeof({source.ImplementationName}));"
-                    : $"            services.TryAddKeyedTransient(typeof({source.ServiceName}), {source.Key});"
+                    : $"            services.TryAddKeyedTransient(typeof({source.ServiceName}), {source.Key});",
+                _ => string.Empty
             };
 
         private static string GetServiceExpression(DependencyInjectionSource source)
             => source.Lifetime switch
             {
-                ServiceLifetime.Scoped => source.ImplementationName != string.Empty ?
-                $"            services.TryAddScoped(typeof({source.ServiceName}), typeof({source.ImplementationName}));"
-                    : $"            services.TryAddScoped(typeof({source.ServiceName}));",
-                ServiceLifetime.Singleton => source.ImplementationName != string.Empty ?
+                0 => source.ImplementationName != string.Empty ?
                 $"            services.TryAddSingleton(typeof({source.ServiceName}), typeof({source.ImplementationName}));"
                     : $"            services.TryAddSingleton(typeof({source.ServiceName}));",
-                _ => source.ImplementationName != string.Empty ?
+                1 => source.ImplementationName != string.Empty ?
+                $"            services.TryAddScoped(typeof({source.ServiceName}), typeof({source.ImplementationName}));"
+                    : $"            services.TryAddScoped(typeof({source.ServiceName}));",
+                2 => source.ImplementationName != string.Empty ?
                 $"            services.TryAddTransient(typeof({source.ServiceName}), typeof({source.ImplementationName}));"
-                    : $"            services.TryAddTransient(typeof({source.ServiceName}));"
+                    : $"            services.TryAddTransient(typeof({source.ServiceName}));",
+                _ => string.Empty
             };
     }
 }

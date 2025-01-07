@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.SourceGenerators.Generators;
-using BuildingBlocks.SourceGenerators.Providers;
-using Microsoft.CodeAnalysis;
+﻿using Microsoft.CodeAnalysis;
 
 namespace BuildingBlocks.SourceGenerators
 {
@@ -11,14 +9,8 @@ namespace BuildingBlocks.SourceGenerators
     {
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            RegisterDependenceInjection(context);
-        }
-
-        private void RegisterDependenceInjection(IncrementalGeneratorInitializationContext context)
-        {
-            var classTargets = context.SyntaxProvider.CreateSyntaxProvider(ClassTargetInjectProvider.Predicate, ClassTargetInjectProvider.Transform).Collect();
-            var assmblyTargets = context.CompilationProvider.SelectMany(AssemblyTargetInjectProvider.Transform).Collect();
-            context.RegisterSourceOutput(classTargets.Combine(assmblyTargets), DependencyInjectionGenerator.RegisterServices);
+            foreach (var item in IncrementalGenerators.Generators)
+                item.Initialize(context);
         }
     }
 }
