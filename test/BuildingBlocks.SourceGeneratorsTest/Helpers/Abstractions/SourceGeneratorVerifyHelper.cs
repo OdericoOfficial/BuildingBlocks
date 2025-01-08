@@ -14,6 +14,6 @@ namespace BuildingBlocks.SourceGeneratorsTest.Helpers.Abstractions
         public Task VerifyAsync(IEnumerable<string> sources)
             => Verify(CSharpGeneratorDriver.Create(Generator)
                 .RunGenerators(CSharpCompilation.Create(AssemblyName, sources.Select(source => CSharpSyntaxTree.ParseText(source)), References)))
-                .UseDirectory("Snapshots");
+                .UseDirectory("../../../Snapshots");
     }
 }

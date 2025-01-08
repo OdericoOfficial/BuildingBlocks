@@ -15,7 +15,8 @@ namespace BuildingBlocks.SourceGeneratorsTest.Helpers
             => $"{nameof(IncrementalGenerators.DependencyInjection)}Test";
 
         protected override IEnumerable<PortableExecutableReference> References
-            => [MetadataReference.CreateFromFile(typeof(IServiceProvider).Assembly.Location),
+            => [MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(IServiceProvider).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceCollection).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IHostedService).Assembly.Location)];
     }

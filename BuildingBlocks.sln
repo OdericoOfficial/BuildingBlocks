@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Aspects.Abst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Aspects.Attributes", "src\BuildingBlocks.Aspects.Attributes\BuildingBlocks.Aspects.Attributes.csproj", "{538E01C8-A00C-4870-8691-AB38B3C2EB63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.SourceGeneratorsTest", "test\BuildingBlocks.SourceGeneratorTest\BuildingBlocks.SourceGeneratorsTest.csproj", "{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.SourceGeneratorsTest", "test\BuildingBlocks.SourceGeneratorsTest\BuildingBlocks.SourceGeneratorsTest.csproj", "{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

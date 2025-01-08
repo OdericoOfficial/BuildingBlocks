@@ -1,7 +1,7 @@
 ﻿
 namespace BuildingBlocks.SourceGenerators.Sources
 {
-    internal struct DependencyInjectionSource
+    internal class DependencyInjectionSource
     {
         public int Lifetime { get; set; } = 3;
         
@@ -14,9 +14,5 @@ namespace BuildingBlocks.SourceGenerators.Sources
         public bool IsEnumerable { get; set; }
         
         public bool IsHosted { get; set; }
-
-        public DependencyInjectionSource()
-        {
-        }
     }
 }
