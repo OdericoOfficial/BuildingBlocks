@@ -116,6 +116,9 @@ namespace DependencyInjectionTest
 
         private static readonly string _hostedClassSource = @"using Microsoft.Extensions.DependencyInjection.Attributes;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DependencyInjectionTest
 {

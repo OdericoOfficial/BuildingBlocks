@@ -40,19 +40,19 @@ namespace BuildingBlocks.SourceGenerators.Providers
                 0 => new DependencyInjectionSource
                 {
                     Lifetime = lifetime,
-                    ServiceName = GetServiceName(data),
-                    ImplementationName = GetImplementationName(data),
-                    Key = GetKey(data),
-                    IsEnumerable = GetIsEnumerable(data),
+                    ServiceName = (data.ConstructorArguments[0].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
+                    ImplementationName = (data.ConstructorArguments[1].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
+                    Key = $"\"{data.ConstructorArguments[2].Value as string ?? string.Empty}\"",
+                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[3].Value),
                     IsHosted = false
                 },
                 1 => new DependencyInjectionSource
                 {
                     Lifetime = lifetime,
                     ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
-                    ImplementationName = GetImplementationName(data),
-                    Key = GetKey(data),
-                    IsEnumerable = GetIsEnumerable(data),
+                    ImplementationName = (data.ConstructorArguments[0].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
+                    Key = $"\"{data.ConstructorArguments[1].Value as string ?? string.Empty}\"",
+                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[2].Value),
                     IsHosted = false
                 },
                 2 => new DependencyInjectionSource
@@ -60,8 +60,8 @@ namespace BuildingBlocks.SourceGenerators.Providers
                     Lifetime = lifetime,
                     ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
                     ImplementationName = data.AttributeClass.TypeArguments[1].ToDisplayString(),
-                    Key = GetKey(data),
-                    IsEnumerable = GetIsEnumerable(data),
+                    Key = $"\"{data.ConstructorArguments[1].Value as string ?? string.Empty}\"",
+                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[1].Value),
                     IsHosted = false
                 },
                 _ => default
@@ -73,30 +73,5 @@ namespace BuildingBlocks.SourceGenerators.Providers
                 ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
                 IsHosted = true
             } : default;
-
-        private static string GetServiceName(AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "serviceType"))
-                return string.Empty;
-            return (data.NamedArguments.First(item => item.Key == "serviceType").Value.Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty;
-        }
-
-        private static string GetImplementationName(AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "implementationType"))
-                return string.Empty;
-            return (data.NamedArguments.First(item => item.Key == "implementationType").Value.Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty;
-        }
-
-        private static string GetKey(AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "key"))
-                return string.Empty;
-            return (data.NamedArguments.First(item => item.Key == "key").Value.Value as string) ?? string.Empty;
-        }
-
-        private static bool GetIsEnumerable(AttributeData data)
-            => data.NamedArguments.Any(item => item.Key == "isEnumerable")
-                && Convert.ToBoolean(data.NamedArguments.First(item => item.Key == "isEnumerable").Value.Value);
     }
 }

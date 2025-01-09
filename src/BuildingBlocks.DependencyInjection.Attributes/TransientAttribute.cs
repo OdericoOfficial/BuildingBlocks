@@ -13,7 +13,7 @@
     }
 
     [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true, Inherited = false)]
-    public class TransientAttribute<TService, TImplementation>(string? key = null, bool isEnumerable = false) 
+    public sealed class TransientAttribute<TService, TImplementation>(string? key = null, bool isEnumerable = false) 
         : ServiceAttribute(ServiceLifetime.Transient, typeof(TService), typeof(TImplementation), key, isEnumerable)
         where TImplementation : class, TService
     {

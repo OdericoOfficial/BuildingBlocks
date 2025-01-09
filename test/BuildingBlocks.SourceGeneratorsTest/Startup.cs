@@ -10,6 +10,7 @@ namespace BuildingBlocks.SourceGeneratorsTest
     {
         public static void ConfigureServices(IServiceCollection services)
         {
+            VerifyDiffPlex.Initialize();
             VerifySourceGenerators.Initialize();
             services.AddLogging(builder => builder.AddXunitOutput());
             services.TryAddSingleton<IDependencyInjectionVerifyHelper, DependencyInjectionVerifyHelper>();

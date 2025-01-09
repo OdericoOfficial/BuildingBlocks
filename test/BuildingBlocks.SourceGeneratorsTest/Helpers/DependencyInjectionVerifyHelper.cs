@@ -2,11 +2,13 @@
 using BuildingBlocks.SourceGeneratorsTest.Helpers.Abstractions;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Attributes;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace BuildingBlocks.SourceGeneratorsTest.Helpers
 {
-    internal class DependencyInjectionVerifyHelper : SourceGeneratorVerifyHelper, IDependencyInjectionVerifyHelper
+    internal class DependencyInjectionVerifyHelper(ILogger<DependencyInjectionVerifyHelper> logger) : SourceGeneratorVerifyHelper(logger), IDependencyInjectionVerifyHelper
     {
         protected override IIncrementalGenerator Generator
             => IncrementalGenerators.DependencyInjection;
@@ -14,10 +16,11 @@ namespace BuildingBlocks.SourceGeneratorsTest.Helpers
         protected override string AssemblyName
             => $"{nameof(IncrementalGenerators.DependencyInjection)}Test";
 
-        protected override IEnumerable<PortableExecutableReference> References
-            => [MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(IServiceProvider).Assembly.Location),
+        protected override IEnumerable<PortableExecutableReference> AdditionalReferences
+            => [MetadataReference.CreateFromFile(typeof(IServiceProvider).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceCollection).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(IHostedService).Assembly.Location)];
+                MetadataReference.CreateFromFile(typeof(IHostedService).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(ServiceAttribute).Assembly.Location)];
+
     }
 }

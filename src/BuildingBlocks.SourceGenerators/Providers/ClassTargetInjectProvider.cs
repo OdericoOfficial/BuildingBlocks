@@ -7,12 +7,12 @@ namespace BuildingBlocks.SourceGenerators.Providers
 {
     internal static class ClassTargetInjectProvider
     {
-        private static readonly ImmutableArray<string> _names 
+        private static readonly ImmutableArray<string> _names
             = ["Service", "ServiceAttribute",
-            "HostedService", "HostedServiceAttribute",
-            "Singleton", "SingletonAttribute",
-            "Scoped", "ScopedAttribute",
-            "Transient", "TransientAttribute",];
+                "HostedService", "HostedServiceAttribute",
+                "Singleton", "SingletonAttribute",
+                "Scoped", "ScopedAttribute",
+                "Transient", "TransientAttribute",];
 
         public static bool Predicate(SyntaxNode node, CancellationToken cancellationToken)
         {
@@ -61,10 +61,13 @@ namespace BuildingBlocks.SourceGenerators.Providers
                 0 => new DependencyInjectionSource
                 {
                     Lifetime = lifetime,
-                    ServiceName = GetServiceName(classSymbol, data),
-                    ImplementationName = GetImplementationName(classSymbol, data),
-                    Key = GetKey(data),
-                    IsEnumerable = GetIsEnumerableZeroTypeArgument(data),
+                    ServiceName = (data.ConstructorArguments[0].Value as INamedTypeSymbol)?.ToDisplayString() ??
+                        (classSymbol.IsGenericType ? classSymbol.ConstructUnboundGenericType().ToDisplayString() : classSymbol.ToDisplayString()),
+                    ImplementationName = data.ConstructorArguments[0].Value as INamedTypeSymbol is not null ? 
+                        classSymbol.IsGenericType ? classSymbol.ConstructUnboundGenericType().ToDisplayString() : classSymbol.ToDisplayString() : string.Empty,
+                    Key = $"\"{data.ConstructorArguments[2].Value as string ?? string.Empty}\"",
+                    IsEnumerable = data.ConstructorArguments[0].Value as INamedTypeSymbol is not null
+                        && Convert.ToBoolean(data.ConstructorArguments[3].Value),
                     IsHosted = false
                 },
                 1 => new DependencyInjectionSource
@@ -72,8 +75,8 @@ namespace BuildingBlocks.SourceGenerators.Providers
                     Lifetime = lifetime,
                     ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
                     ImplementationName = classSymbol.ToDisplayString(),
-                    Key = GetKey(data),
-                    IsEnumerable = GetIsEnumerableOneTypeArgument(data),
+                    Key = $"\"{data.ConstructorArguments[1].Value as string ?? string.Empty}\"",
+                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[2].Value),
                     IsHosted = false
                 },
                 _ => default
@@ -85,37 +88,5 @@ namespace BuildingBlocks.SourceGenerators.Providers
                 ServiceName = classSymbol.ToDisplayString(),
                 IsHosted = true
             } : default;
-
-        private static string GetServiceName(INamedTypeSymbol classSymbol, AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "serviceType"))
-                return (classSymbol.IsGenericType ? classSymbol.ConstructUnboundGenericType().ToDisplayString() : classSymbol.ToDisplayString());
-            return (data.NamedArguments.First(item => item.Key == "serviceType").Value.Value as INamedTypeSymbol)?.ToDisplayString() ??
-                (classSymbol.IsGenericType ? classSymbol.ConstructUnboundGenericType().ToDisplayString() : classSymbol.ToDisplayString());
-        }
-
-        private static string GetImplementationName(INamedTypeSymbol classSymbol, AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "serviceType"))
-                return string.Empty;
-            return classSymbol.IsGenericType ? classSymbol.ConstructUnboundGenericType().ToDisplayString() : classSymbol.ToDisplayString();
-        }
-
-        private static string GetKey(AttributeData data)
-        {
-            if (!data.NamedArguments.Any(item => item.Key == "key"))
-                return string.Empty;
-            return data.NamedArguments.First(item => item.Key == "key").Value.Value as string ?? string.Empty;
-        }
-
-        private static bool GetIsEnumerableZeroTypeArgument(AttributeData data)
-            => data.NamedArguments.Any(item => item.Key == "isEnumerable")
-                && Convert.ToBoolean(data.NamedArguments.First(item => item.Key == "isEnumerable").Value.Value)
-                && data.NamedArguments.Any(item => item.Key == "serviceType")
-                && data.NamedArguments.First(item => item.Key == "serviceType").Value.Value is INamedTypeSymbol;
-
-        private static bool GetIsEnumerableOneTypeArgument(AttributeData data)
-            => data.NamedArguments.Any(item => item.Key == "isEnumerable")
-                && Convert.ToBoolean(data.NamedArguments.First(item => item.Key == "isEnumerable").Value.Value);
     }
 }
