@@ -16,7 +16,7 @@ namespace BuildingBlocks.ReflectionBenchmark
             {
                 AddLogger(ConsoleLogger.Unicode);
                 AddColumnProvider(DefaultColumnProviders.Instance);
-                AddExporter(DefaultExporters.Csv, DefaultExporters.RPlot);
+                AddExporter(DefaultExporters.Csv);
             }
         }
         static void Main(string[] args)
