@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 using System.Reflection.Emit;
 using System.Reflection;
 using System.Reflection.Unsafe;
-using CommandLine.Text;
 
 namespace BuildingBlocks.ReflectionBenchmark
 {
@@ -78,7 +77,6 @@ namespace BuildingBlocks.ReflectionBenchmark
         [Benchmark]
         public void StructEmitSet()
             => GetEmitSetter<TestStruct, int>(_structFieldInfo)(ref _struct, 0);
-
 
         [Benchmark]
         public void Class()

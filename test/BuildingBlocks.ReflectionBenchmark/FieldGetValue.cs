@@ -6,6 +6,7 @@ using System.Reflection.Unsafe;
 
 namespace BuildingBlocks.ReflectionBenchmark
 {
+    [MemoryDiagnoser]
     public class FieldGetValue
     {
         private TestClass _class;
