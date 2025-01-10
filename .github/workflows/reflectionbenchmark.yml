@@ -21,7 +21,7 @@ jobs:
         run: cd test/BuildingBlocks.ReflectionBenchmark && dotnet run --exporters json --filter '*'
 
       - name: Store benchmark result
-        uses: rhysd/github-action-benchmark@v1
+        uses: rhysd/github-action-benchmark@v1.20.4
         with:
           name: BuildingBlocks.ReflectionBenchmark
           tool: 'benchmarkdotnet'
