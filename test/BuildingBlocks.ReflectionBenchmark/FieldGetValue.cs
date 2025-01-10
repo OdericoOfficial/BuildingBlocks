@@ -97,7 +97,7 @@ namespace BuildingBlocks.ReflectionBenchmark
         {
             var valueType = typeof(TValue);
             var targetType = typeof(TTarget);
-            var getterMethod = new DynamicMethod($"Get{valueType.Name}", valueType, [targetType]);
+            var getterMethod = new DynamicMethod($"Get{targetType.Name}", valueType, [targetType]);
 
             var il = getterMethod.GetILGenerator();
             il.Emit(OpCodes.Ldarg_0);

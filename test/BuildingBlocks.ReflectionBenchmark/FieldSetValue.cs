@@ -64,6 +64,23 @@ namespace BuildingBlocks.ReflectionBenchmark
             => _emitStructSetter(ref _struct, 0);
 
         [Benchmark]
+        public void ClassExpSet()
+            => GetExpSetter<TestClass, int>(_classFieldInfo)(ref _class, 0);
+
+        [Benchmark]
+        public void StructExpSet()
+            => GetExpSetter<TestStruct, int>(_structFieldInfo)(ref _struct, 0);
+
+        [Benchmark]
+        public void ClassEmitSet()
+            => GetEmitSetter<TestClass, int>(_classFieldInfo)(ref _class, 0);
+
+        [Benchmark]
+        public void StructEmitSet()
+            => GetEmitSetter<TestStruct, int>(_structFieldInfo)(ref _struct, 0);
+
+
+        [Benchmark]
         public void Class()
             => _class.Index = 0;
 
@@ -85,7 +102,7 @@ namespace BuildingBlocks.ReflectionBenchmark
         {
             var valueType = typeof(TValue);
             var targetType = typeof(TTarget);
-            var dynamicMethod = new DynamicMethod($"Set{valueType.Name}", null, [typeof(TTarget).MakeByRefType(), targetType]);
+            var dynamicMethod = new DynamicMethod($"Set{targetType.Name}", null, [targetType.MakeByRefType(), valueType]);
 
             var ilGenerator = dynamicMethod.GetILGenerator();
 
