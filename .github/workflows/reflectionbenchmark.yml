@@ -25,7 +25,7 @@ jobs:
         with:
           name: benchmark
           tool: 'benchmarkdotnet'
-          output-file-path: test/BenchmarkDotNet.Artifacts/results/BuildingBlocks.ReflectionBenchmark.Benchmarks-report-full-compressed.json
+          output-file-path: test/BenchmarkDotNet.Artifacts/results/ReflectionBenchmark.Benchmarks-report-full-compressed.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
           alert-threshold: '200%'
