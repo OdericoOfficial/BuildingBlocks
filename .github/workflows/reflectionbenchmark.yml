@@ -18,7 +18,7 @@ jobs:
         with:
           dotnet-version: 9.0.x
       - name: Run benchmark
-        run: cd test/BuildingBlocks.ReflectionBenchmark && dotnet build --configuration Release --no-restore && dotnet run --configuration Release --exporters json --filter '*'
+        run: cd test/BuildingBlocks.ReflectionBenchmark && dotnet build --configuration Release && dotnet run --configuration Release --exporters json --filter '*'
 
       - name: Store benchmark
         uses: rhysd/github-action-benchmark@v1.20.4
