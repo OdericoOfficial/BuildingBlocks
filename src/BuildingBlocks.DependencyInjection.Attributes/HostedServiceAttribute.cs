@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Extensions.DependencyInjection.Attributes
+﻿namespace BuildingBlocks.DependencyInjection.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public sealed class HostedServiceAttribute : Attribute

@@ -11,7 +11,7 @@ namespace BuildingBlocks.SourceGeneratorsTest
     public interface IDITest<T1, T2> : IDITest { }
 }";
 
-        private static readonly string _inheritedClassSource = @"using Microsoft.Extensions.DependencyInjection.Attributes;
+        private static readonly string _inheritedClassSource = @"using BuildingBlocks.DependencyInjection.Attributes;
 using DependencyInjectionTest.Abstractions;
 
 namespace DependencyInjectionTest
@@ -81,7 +81,7 @@ namespace DependencyInjectionTest
     internal class DITest<T1, T2> : IDITest, IDITest<T1, T2> { }
 }";
 
-        private static readonly string _classSource = @"using Microsoft.Extensions.DependencyInjection.Attributes;
+        private static readonly string _classSource = @"using BuildingBlocks.DependencyInjection.Attributes;
 
 namespace DependencyInjectionTest
 {
@@ -114,7 +114,7 @@ namespace DependencyInjectionTest
     internal class EmptyDITest<T1, T2> { }
 }";
 
-        private static readonly string _hostedClassSource = @"using Microsoft.Extensions.DependencyInjection.Attributes;
+        private static readonly string _hostedClassSource = @"using BuildingBlocks.DependencyInjection.Attributes;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Threading;
@@ -142,7 +142,7 @@ namespace DependencyInjectionTest
 }";
 
         private static readonly string _assemblyAttributes = $@"using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Attributes;
+using BuildingBlocks.DependencyInjection.Attributes;
 using DependencyInjectionTest.Abstractions;
 using DependencyInjectionTest;
 

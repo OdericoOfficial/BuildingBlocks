@@ -2,7 +2,7 @@
 using BuildingBlocks.SourceGeneratorsTest.Helpers.Abstractions;
 using Microsoft.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Attributes;
+using BuildingBlocks.DependencyInjection.Attributes;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 

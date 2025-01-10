@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection.Attributes
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace BuildingBlocks.DependencyInjection.Attributes
 {
     [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     public sealed class ScopedAttribute(Type? serviceType = null, Type? implementationType = null,

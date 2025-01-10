@@ -105,6 +105,8 @@ namespace BuildingBlocks.ReflectionBenchmark
             var ilGenerator = dynamicMethod.GetILGenerator();
 
             ilGenerator.Emit(OpCodes.Ldarg_0);
+            if (!targetType.IsValueType)
+                ilGenerator.Emit(OpCodes.Ldind_Ref);
             ilGenerator.Emit(OpCodes.Ldarg_1);
             ilGenerator.Emit(OpCodes.Call, propertyInfo.GetSetMethod()!);
             ilGenerator.Emit(OpCodes.Ret);
