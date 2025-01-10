@@ -4,14 +4,13 @@ namespace System.Reflection.Unsafe
 {
     public static class PropertyInfoExtensions
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe bool TryGetValueUnsafe<TTarget, TValue>(this PropertyInfo propertyInfo, ref TTarget target, out TValue? value)
         {
             value = default;
             if (!propertyInfo.CanRead)
                 return false;
 
-            var pointer = propertyInfo.GetGetMethod().MethodHandle.GetFunctionPointer();
+            var pointer = MethodDesc.GetFunctionPointer(propertyInfo.GetGetMethod());
             if (pointer == default)
                 return false;
 
@@ -25,13 +24,12 @@ namespace System.Reflection.Unsafe
             return true;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe bool TrySetValueUnsafe<TTarget, TValue>(this PropertyInfo propertyInfo, ref TTarget target, TValue value)
         {
             if (!propertyInfo.CanWrite)
                 return false;
 
-            var pointer = propertyInfo.GetSetMethod().MethodHandle.GetFunctionPointer();
+            var pointer = MethodDesc.GetFunctionPointer(propertyInfo.GetGetMethod());
             if (pointer == default)
                 return false;
 

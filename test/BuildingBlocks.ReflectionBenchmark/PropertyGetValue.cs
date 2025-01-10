@@ -7,7 +7,7 @@ using System.Reflection.Unsafe;
 namespace BuildingBlocks.ReflectionBenchmark
 {
     [MemoryDiagnoser]
-    internal class PropertyGetValue
+    public class PropertyGetValue
     {
         private TestClass _class;
         private TestStruct _struct;
