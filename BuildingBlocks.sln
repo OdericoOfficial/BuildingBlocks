@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.ReflectionBenchmark", "test\BuildingBlocks.ReflectionBenchmark\BuildingBlocks.ReflectionBenchmark.csproj", "{35FF2200-3451-4E3B-975E-6AAFB5E4F250}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35FF2200-3451-4E3B-975E-6AAFB5E4F250}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35FF2200-3451-4E3B-975E-6AAFB5E4F250}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35FF2200-3451-4E3B-975E-6AAFB5E4F250}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35FF2200-3451-4E3B-975E-6AAFB5E4F250}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,6 @@ Global
 		{6E95D9F0-DF12-47B3-85EE-EFE5D3A0B885} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 		{538E01C8-A00C-4870-8691-AB38B3C2EB63} = {26DA755D-57FA-464D-9246-C6936110FCDD}
 		{CB98E7DD-9ACE-4670-9206-B6CA6E6728FC} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
+		{35FF2200-3451-4E3B-975E-6AAFB5E4F250} = {40B1587C-3EC9-4641-990D-0E78F11CC631}
 	EndGlobalSection
 EndGlobal
