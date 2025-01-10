@@ -25,7 +25,7 @@ namespace BuildingBlocks.SourceGeneratorsTest.Helpers.Abstractions
                 logger.LogCritical(item.GetMessage());
             return Verify(CSharpGeneratorDriver.Create(Generator)
                 .RunGenerators(compilation))
-                .UseDirectory("../../../Snapshots");
+                .UseDirectory("../../../VerifyXunit.Verified");
         }
     }
 }

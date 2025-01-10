@@ -9,23 +9,23 @@ permissions:
 
 jobs:
   benchmark:
-    name: Run BuildingBlocks.ReflectionBenchmark
+    name: Run benchmark
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup BuildingBlocks.ReflectionBenchmark
+      - name: Setup benchmark
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.0.x
-      - name: Run BuildingBlocks.ReflectionBenchmark
+      - name: Run benchmark
         run: cd test/BuildingBlocks.ReflectionBenchmark && dotnet run --exporters json --filter '*'
 
-      - name: Store benchmark result
+      - name: Store benchmark
         uses: rhysd/github-action-benchmark@v1.20.4
         with:
-          name: BuildingBlocks.ReflectionBenchmark
+          name: benchmark
           tool: 'benchmarkdotnet'
-          output-file-path: test/BuildingBlocks.ReflectionBenchmark/BenchmarkDotNet.Artifacts/results/Sample.Benchmarks-report-full-compressed.json
+          output-file-path: test/BenchmarkDotNet.Artifacts/results/BuildingBlocks.ReflectionBenchmark.Benchmarks-report-full-compressed.json
           github-token: ${{ secrets.GITHUB_TOKEN }}
           auto-push: true
           alert-threshold: '200%'

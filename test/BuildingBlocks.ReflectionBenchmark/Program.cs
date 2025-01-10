@@ -5,8 +5,6 @@ namespace BuildingBlocks.ReflectionBenchmark
     internal class Program
     {
         static void Main(string[] args)
-        {
-            BenchmarkRunner.Run<FieldGetValue>();
-        }
+            => BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
     }
 }
