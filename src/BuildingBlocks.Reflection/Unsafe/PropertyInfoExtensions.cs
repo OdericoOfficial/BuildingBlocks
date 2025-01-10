@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace System.Reflection.Unsafe
 {
@@ -45,7 +46,7 @@ namespace System.Reflection.Unsafe
             return true;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]  
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static unsafe TValue GetValueUnsafeFromReference<TTarget, TValue>(nint pointer, TTarget target)
             => ((delegate*<TTarget, TValue>)pointer)(target);
 

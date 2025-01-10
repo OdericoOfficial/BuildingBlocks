@@ -19,16 +19,3 @@ jobs:
           dotnet-version: 9.0.x
       - name: Run benchmark
         run: cd test/BuildingBlocks.ReflectionBenchmark && dotnet build --configuration Release && dotnet run --configuration Release --exporters json --filter '*'
-
-      - name: Store benchmark
-        uses: rhysd/github-action-benchmark@v1.20.4
-        with:
-          name: benchmark
-          tool: 'benchmarkdotnet'
-          output-file-path: test/BenchmarkDotNet.Artifacts/results/ReflectionBenchmark.Benchmarks-report-full-compressed.json
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          auto-push: true
-          alert-threshold: '200%'
-          comment-on-alert: true
-          fail-on-alert: true
-          alert-comment-cc-users: '@ktrz'

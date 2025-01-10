@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using static System.Runtime.CompilerServices.Unsafe;
 
@@ -18,7 +19,7 @@ namespace System.Reflection.Unsafe
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public unsafe static int GetOffset(FieldInfo fieldInfo)
-                => (int)(((FieldDesc32*)(fieldInfo.FieldHandle.Value))->m_dword2 & 0x7FFFFFF);
+                => (int)(((FieldDesc32*)fieldInfo.FieldHandle.Value)->m_dword2 & 0x7FFFFFF);
         }
 
         [StructLayout(LayoutKind.Explicit)]
@@ -33,7 +34,7 @@ namespace System.Reflection.Unsafe
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public unsafe static int GetOffset(FieldInfo fieldInfo)
-                => (int)(((FieldDesc64*)(fieldInfo.FieldHandle.Value))->m_dword2 & 0x7FFFFFF);
+                => (int)(((FieldDesc64*)fieldInfo.FieldHandle.Value)->m_dword2 & 0x7FFFFFF);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

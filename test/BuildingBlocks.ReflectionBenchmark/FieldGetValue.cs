@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Reflection.Unsafe;
 using BenchmarkDotNet.Attributes;
+using System.Reflection.Unsafe;
 
 namespace BuildingBlocks.ReflectionBenchmark
 {
@@ -12,10 +12,10 @@ namespace BuildingBlocks.ReflectionBenchmark
         private TestStruct _struct;
         private FieldInfo _classFieldInfo;
         private FieldInfo _structFieldInfo;
-        private Func<TestClass, int> _expClassGetter;
-        private Func<TestClass, int> _emitClassGetter;
-        private Func<TestStruct, int> _expStructGetter;
-        private Func<TestStruct, int> _emitStructGetter;
+        private TestGetter<TestClass, int> _expClassGetter;
+        private TestGetter<TestClass, int> _emitClassGetter;
+        private TestGetter<TestStruct, int> _expStructGetter;
+        private TestGetter<TestStruct, int> _emitStructGetter;
 
         public FieldGetValue()
         {
@@ -64,7 +64,7 @@ namespace BuildingBlocks.ReflectionBenchmark
         [Benchmark]
         public int ClassExpGet()
             => GetExpGetter<TestClass, int>(_classFieldInfo)(_class);
-
+         
         [Benchmark]
         public int StructExpGet()
             => GetExpGetter<TestStruct, int>(_structFieldInfo)(_struct);
@@ -85,26 +85,26 @@ namespace BuildingBlocks.ReflectionBenchmark
         public int Struct()
             => _struct.Index;
 
-        public static Func<TTarget, TValue> GetExpGetter<TTarget, TValue>(FieldInfo fieldInfo)
+        public static TestGetter<TTarget, TValue> GetExpGetter<TTarget, TValue>(FieldInfo fieldInfo)
         {
             var param = Expression.Parameter(typeof(TTarget));
             var fieldAccess = Expression.Field(param, fieldInfo);
-            var lambda = Expression.Lambda<Func<TTarget, TValue>>(fieldAccess, param);
+            var lambda = Expression.Lambda<TestGetter<TTarget, TValue>>(fieldAccess, param);
             return lambda.Compile();
         }
 
-        private static Func<TTarget, TValue> GetEmitGetter<TTarget, TValue>(FieldInfo fieldInfo)
+        private static TestGetter<TTarget, TValue> GetEmitGetter<TTarget, TValue>(FieldInfo fieldInfo)
         {
             var valueType = typeof(TValue);
             var targetType = typeof(TTarget);
-            var getterMethod = new DynamicMethod($"Get{valueType.Name}", valueType, [targetType], targetType);
+            var getterMethod = new DynamicMethod($"Get{valueType.Name}", valueType, [targetType]);
 
             var il = getterMethod.GetILGenerator();
             il.Emit(OpCodes.Ldarg_0);
             il.Emit(OpCodes.Ldfld, fieldInfo);
             il.Emit(OpCodes.Ret);
 
-            return (Func<TTarget, TValue>)getterMethod.CreateDelegate(typeof(Func<TTarget, TValue>));
+            return (TestGetter<TTarget, TValue>)getterMethod.CreateDelegate(typeof(TestGetter<TTarget, TValue>));
         }
     }
 }
