@@ -52,9 +52,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 if (source.IsHosted)
                     expression = $"            services.AddHostedService<{source.ServiceName}>();";
                 else if (source.IsEnumerable && source.ImplementationName != string.Empty)
-                    expression = source.Key == string.Empty || source.Key == "\"\"" ? GetEnumerableServiceExpression(source) : GetKeyedEnumerableServiceExpression(source);
+                    expression = source.Key == string.Empty ? GetEnumerableServiceExpression(source) : GetKeyedEnumerableServiceExpression(source);
                 else
-                    expression = source.Key == string.Empty || source.Key == "\"\"" ? GetServiceExpression(source) : GetKeyedServiceExpression(source);
+                    expression = source.Key == string.Empty ? GetServiceExpression(source) : GetKeyedServiceExpression(source);
 
                 if (expression != string.Empty)
                     sourceBuilder.AppendLine(expression);

@@ -20,7 +20,7 @@ namespace BuildingBlocks.SourceGeneratorsTest.Helpers
             => [MetadataReference.CreateFromFile(typeof(IServiceProvider).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IServiceCollection).Assembly.Location),
                 MetadataReference.CreateFromFile(typeof(IHostedService).Assembly.Location),
-                MetadataReference.CreateFromFile(typeof(ServiceAttribute).Assembly.Location)];
+                MetadataReference.CreateFromFile(typeof(HostedServiceAttribute).Assembly.Location)];
 
     }
 }

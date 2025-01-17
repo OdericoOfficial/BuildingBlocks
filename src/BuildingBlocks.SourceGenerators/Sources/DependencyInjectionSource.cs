@@ -3,7 +3,7 @@ namespace BuildingBlocks.SourceGenerators.Sources
 {
     internal class DependencyInjectionSource
     {
-        public int Lifetime { get; set; } = 3;
+        public int Lifetime { get; set; }
         
         public string ServiceName { get; set; } = string.Empty;
         

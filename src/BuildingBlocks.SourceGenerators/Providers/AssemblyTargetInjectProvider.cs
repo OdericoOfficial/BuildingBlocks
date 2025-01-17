@@ -11,60 +11,29 @@ namespace BuildingBlocks.SourceGenerators.Providers
             return compilation.Assembly.GetAttributes()
                 .Where(item => item.AttributeClass is not null
                 && item.AttributeClass.TypeKind != TypeKind.Error
-                && (item.AttributeClass.Name == "SingletonAttribute"
-                    || item.AttributeClass.Name == "ScopedAttribute"
-                    || item.AttributeClass.Name == "TransientAttribute"
+                && (item.AttributeClass.Name == "SingletonAssemblyAttribute"
+                    || item.AttributeClass.Name == "ScopedAssemblyAttribute"
+                    || item.AttributeClass.Name == "TransientAssemblyAttribute"
                     || item.AttributeClass.Name == "HostedServiceAttribute"))
                 .Select(item => item.AttributeClass!.Name switch
                 {
-                    "SingletonAttribute" => GetSingletonSource(item),
-                    "ScopedAttribute" => GetScopedSource(item),
-                    "TransientAttribute" => GetTransientSource(item),
+                    "SingletonAssemblyAttribute" => GetServiceSource(item, 0),
+                    "ScopedAssemblyAttribute" => GetServiceSource(item, 1),
+                    "TransientAssemblyAttribute" => GetServiceSource(item, 2),
                     "HostedServiceAttribute" => GetHostedSource(item),
                     _ => default
                 });
         }
 
-        private static DependencyInjectionSource? GetSingletonSource(AttributeData data)
-            => GetServiceSource(data, 0);
-
-        private static DependencyInjectionSource? GetScopedSource(AttributeData data)
-            => GetServiceSource(data, 1);
-
-        private static DependencyInjectionSource? GetTransientSource(AttributeData data)
-            => GetServiceSource(data, 2);
-
-        private static DependencyInjectionSource? GetServiceSource(AttributeData data, int lifetime)
-            => data.AttributeClass!.TypeArguments.Length switch
+        private static DependencyInjectionSource GetServiceSource(AttributeData data, int lifetime)
+            => new DependencyInjectionSource
             {
-                0 => new DependencyInjectionSource
-                {
-                    Lifetime = lifetime,
-                    ServiceName = (data.ConstructorArguments[0].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
-                    ImplementationName = (data.ConstructorArguments[1].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
-                    Key = $"\"{data.ConstructorArguments[2].Value as string ?? string.Empty}\"",
-                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[3].Value),
-                    IsHosted = false
-                },
-                1 => new DependencyInjectionSource
-                {
-                    Lifetime = lifetime,
-                    ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
-                    ImplementationName = (data.ConstructorArguments[0].Value as INamedTypeSymbol)?.ToDisplayString() ?? string.Empty,
-                    Key = $"\"{data.ConstructorArguments[1].Value as string ?? string.Empty}\"",
-                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[2].Value),
-                    IsHosted = false
-                },
-                2 => new DependencyInjectionSource
-                {
-                    Lifetime = lifetime,
-                    ServiceName = data.AttributeClass.TypeArguments[0].ToDisplayString(),
-                    ImplementationName = data.AttributeClass.TypeArguments[1].ToDisplayString(),
-                    Key = $"\"{data.ConstructorArguments[1].Value as string ?? string.Empty}\"",
-                    IsEnumerable = Convert.ToBoolean(data.ConstructorArguments[1].Value),
-                    IsHosted = false
-                },
-                _ => default
+                Lifetime = lifetime,
+                ServiceName = data.GetServiceName(),
+                ImplementationName = data.GetImplementationName(),
+                Key = data.GetKey(),
+                IsEnumerable = data.GetIsEnumerableAssembly(),
+                IsHosted = false
             };
 
         private static DependencyInjectionSource? GetHostedSource(AttributeData data)
